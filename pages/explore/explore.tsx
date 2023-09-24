@@ -1,8 +1,77 @@
 import Layout from "@/components/layout";
 import MessagePost from "@/components/message-post";
 import { ReactElement, useEffect, useState } from 'react';
+import { ethers } from "ethers";
 
 export default function Explore() {
+
+    const polygon_address = "0x8dbA78f88AE02Cc2F2A86E170Bb6346d73263D41";
+
+    const abi = [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "author",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "content",
+                    "type": "string"
+                }
+            ],
+            "name": "PostCreated",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_content",
+                    "type": "string"
+                }
+            ],
+            "name": "createPost",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "user_address",
+                    "type": "address"
+                }
+            ],
+            "name": "getPosts",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "address",
+                            "name": "author",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "string",
+                            "name": "content",
+                            "type": "string"
+                        }
+                    ],
+                    "internalType": "struct SocialMedia.Post[]",
+                    "name": "",
+                    "type": "tuple[]"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ];
 
     const [posts, setPosts] = useState([{
         user_name: "test1",
@@ -23,12 +92,37 @@ export default function Explore() {
 
     const postMessage = async (e: any) => {
         e.preventDefault();
-        await fetch("http://localhost:3000/api/post");
+
+        const alchemy_provider = new ethers.AlchemyProvider(
+            "matic-mumbai",
+            process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+        );
+
+        const userWallet = new ethers.Wallet(
+            process.env.NEXT_PUBLIC_PRIVATE_KEY as string,
+            alchemy_provider
+          );
+
+        const contract = new ethers.Contract(polygon_address, abi, userWallet);
+
+        await contract.createPost(message);
     }
 
     useEffect(() => {
+        async function get_posts() {
+            const alchemy_provider = new ethers.AlchemyProvider(
+                "matic-mumbai",
+                process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+            );
 
-    }, []);
+            const contract = new ethers.Contract(polygon_address, abi, alchemy_provider);
+
+            const posts = await contract.getPosts("0xA05a04333D33225D6383583333Ed82d93716270C");
+            setPosts(posts);
+        }
+        get_posts();
+
+    }, [])
     return (
         <div className="min-h-screen flex justify-center bg-black">
             <div className="flex flex-col mt-20">

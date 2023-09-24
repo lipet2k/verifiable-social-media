@@ -1,7 +1,7 @@
 const hre = require("hardhat");
 
 async function main() {
-    const verifier = await hre.ethers.deployContract("Verifier");
+    const verifier = await hre.ethers.deployContract("SocialMedia");
     await verifier.waitForDeployment();
 
     console.log(

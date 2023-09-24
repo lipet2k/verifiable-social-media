@@ -31,3 +31,4 @@ Verifier deployed to 0x9e13eE946052a39Ba4bA07d047cac26aA26B353A
 
 ## Verifier Deployment to Polygon Network
 Verifier deployed to 0x5b99dF699A964ED73D5Da4752cCf4dBD7C7C5ACA
+SocialMedia deployed to 0x8dbA78f88AE02Cc2F2A86E170Bb6346d73263D41
