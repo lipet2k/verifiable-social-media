@@ -109,18 +109,18 @@ export default function Explore() {
     }
 
     useEffect(() => {
-        async function get_posts() {
-            const alchemy_provider = new ethers.AlchemyProvider(
-                "matic-mumbai",
-                process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
-            );
+        // async function get_posts() {
+        //     const alchemy_provider = new ethers.AlchemyProvider(
+        //         "matic-mumbai",
+        //         process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+        //     );
 
-            const contract = new ethers.Contract(polygon_address, abi, alchemy_provider);
+        //     const contract = new ethers.Contract(polygon_address, abi, alchemy_provider);
 
-            const posts = await contract.getPosts("0xA05a04333D33225D6383583333Ed82d93716270C");
-            setPosts(posts);
-        }
-        get_posts();
+        //     const posts = await contract.getPosts("0xA05a04333D33225D6383583333Ed82d93716270C");
+        //     setPosts(posts);
+        // }
+        // get_posts();
 
     }, [])
     return (
