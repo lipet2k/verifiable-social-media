@@ -8,7 +8,12 @@ function Header() {
 
     return (
         <div className="flex justify-between items-center pr-4 pl-8 mb-2">
-            <Link className="hover:underline" href="/explore"><Image src="/logos/y.png" alt="y-logo" width={40} height={40} /></Link>
+            <Link className="hover:underline" href="/explore">
+                <div className="flex p-2">
+                <Image src="/images/queen.svg" alt="y-logo" width={20} height={5} className="mr-2"/>
+                <h1 className="font-bold text-4xl p-1">checkmate</h1>
+                </div>
+                </Link>
             <div className="flex space-x-8 text-md lg:text-xl items-center">
                 <Link className="hover:underline" href="/explore">Explore</Link>
                 <Link className="hover:underline" href="/profile">Profile</Link>
