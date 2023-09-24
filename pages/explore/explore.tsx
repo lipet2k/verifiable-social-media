@@ -33,14 +33,16 @@ export default function Explore() {
         <div className="min-h-screen flex justify-center bg-black">
             <div className="flex flex-col mt-20">
                 <div className="flex flex-col w-[20rem] lg:w-[50rem] h-[10rem] rounded-lg bg-white mb-[2rem] p-2">
-                    <input placeholder="Say something to the world!" className="pl-2 w-[19rem] lg:w-[49rem] h-[8rem] mb-[0.5rem]" onChange={handleOnChange}></input>
+                    <textarea placeholder="Say something to the world!" className="pl-2 w-[19rem] lg:w-[49rem] h-[8rem] mb-[0.5rem] outline-0 resize-none" onChange={handleOnChange}></textarea>
                     <div className="flex justify-end">
                         <button className="p-2 hover:bg-white bg-black rounded-lg hover:shadow border border-black items-end w-20 text-white hover:text-black border hover:border-dotted hover:underline" onClick={postMessage}>Post</button>
                     </div>
                 </div>
                 <div className="flex flex-col space-y-[2rem]">
                     {posts.map((post: any, index: number) => (
-                        <MessagePost user_name={post.user_name} text={post.text} />
+                        <div key={index}>
+                            <MessagePost user_name={post.user_name} text={post.text} />
+                        </div>
                     ))}
                 </div>
             </div>
