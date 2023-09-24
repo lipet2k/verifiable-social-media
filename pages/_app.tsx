@@ -1,4 +1,6 @@
 import '@/styles/globals.css'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 import type { ReactElement, ReactNode } from 'react';
 import type { AppProps } from 'next/app'
@@ -21,6 +23,19 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
 
   return getLayout(
     <SessionProvider session={session}>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        limit={1}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="light"
+      />
       <Component {...pageProps} />
     </SessionProvider>
   )

@@ -14,7 +14,7 @@ function Header() {
                 <Link className="hover:underline" href="/profile">Profile</Link>
                 {session && <Link className="hover:underline" href="/admin">Admin</Link>}
                 <Link href="/signin">
-                    <div className="bg-black pl-2 pr-2 pb-1 pt-1 rounded-lg text-white hover:bg-white hover:text-black hover:underline hover:text-black border hover:border-black hover:border-dashed">
+                    <div className="bg-black items-center justify-center flex rounded-lg text-white hover:bg-white hover:text-black hover:underline hover:text-black border hover:border-black hover:border-dashed lg:h-[2.5rem] lg:w-[6rem] w-[5rem] h-[2rem]">
                         Sign In
                     </div>
                 </Link>

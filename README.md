@@ -24,3 +24,10 @@ Note: The Deep Neural Network was likely overfitting on the training data, and l
 ## Running the models
 
 The models were trained on an A100 through Google Collab, to run the model use the Jupyter Notebook found under models.
+
+## Verifier Deployment to Scroll Network
+Verifier deployed to 0x9e13eE946052a39Ba4bA07d047cac26aA26B353A
+(This contract is too large to compile with the scrollscan web application so here is a published example of a Lock.js file published from the same address to prove that something was deployed: 0x86FdE99543f0490226aE40003c848F3AA53AB193).
+
+## Verifier Deployment to Polygon Network
+Verifier deployed to 0x5b99dF699A964ED73D5Da4752cCf4dBD7C7C5ACA
