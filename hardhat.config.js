@@ -4,7 +4,7 @@ require('dotenv').config({ path: __dirname + '/.env' })
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.19",
-  defaultNetwork: "mumbai",
+  defaultNetwork: "scrollSepolia",
   networks: {
     scrollSepolia: {
       url: "https://sepolia-rpc.scroll.io" || "",
